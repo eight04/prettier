@@ -101,7 +101,7 @@
     "test-integration": "jest tests_integration",
     "lint": "cross-env EFF_NO_LINK_RULES=true eslint . --format node_modules/eslint-friendly-formatter",
     "lint-docs": "prettylint {.,docs,website,website/blog}/*.md",
-    "build-es-info": "shx rm .es-info.json && rollup -c --environment=DUMP_ES_INFO",
+    "build-es-info": "shx rm -f .es-info.json && rollup -c --environment=DUMP_ES_INFO",
     "build-prettier": "shx rm -rf dist && rollup -c",
     "build": "npm run build-es-info && npm run build-prettier",
     "build-docs": "node ./scripts/build/build-docs.js",

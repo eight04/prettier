@@ -8,6 +8,13 @@
         "default": false,
         "all": false
       },
+      "./src/common/support": {
+        "named": [
+          "getSupportInfo"
+        ],
+        "default": false,
+        "all": false
+      },
       "./src/common/util": {
         "named": [],
         "default": false,
@@ -18,14 +25,12 @@
         "default": false,
         "all": true
       },
-      "./src/common/support": {
-        "named": [
-          "getSupportInfo"
-        ],
+      "./src/config/resolve-config": {
+        "named": [],
         "default": false,
-        "all": false
+        "all": true
       },
-      "./src/main/comments": {
+      "./src/doc": {
         "named": [],
         "default": false,
         "all": true
@@ -35,6 +40,11 @@
         "default": true,
         "all": false
       },
+      "./src/main/comments": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
       "./src/main/options": {
         "named": [
           "normalize"
@@ -43,16 +53,6 @@
         "all": false
       },
       "./src/main/parser": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./src/config/resolve-config": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./src/doc": {
         "named": [],
         "default": false,
         "all": true
@@ -119,7 +119,7 @@
   },
   "node_modules\\@babel\\highlight\\lib\\index.js": {
     "import": {
-      "js-tokens": {
+      "chalk": {
         "named": [],
         "default": false,
         "all": true
@@ -129,7 +129,7 @@
         "default": false,
         "all": true
       },
-      "chalk": {
+      "js-tokens": {
         "named": [],
         "default": false,
         "all": true
@@ -148,16 +148,26 @@
   },
   "node_modules\\@glimmer\\syntax\\dist\\modules\\es2017\\index.js": {
     "import": {
+      "./lib/builders": {
+        "named": [],
+        "default": true,
+        "all": false
+      },
+      "./lib/errors/syntax-error": {
+        "named": [],
+        "default": true,
+        "all": false
+      },
+      "./lib/generation/print": {
+        "named": [],
+        "default": true,
+        "all": false
+      },
       "./lib/parser/tokenizer-event-handlers": {
         "named": [
           "preprocess"
         ],
         "default": false,
-        "all": false
-      },
-      "./lib/builders": {
-        "named": [],
-        "default": true,
         "all": false
       },
       "./lib/traversal/errors": {
@@ -175,16 +185,6 @@
         "all": false
       },
       "./lib/traversal/walker": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
-      "./lib/generation/print": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
-      "./lib/errors/syntax-error": {
         "named": [],
         "default": true,
         "all": false
@@ -243,18 +243,18 @@
   },
   "node_modules\\@glimmer\\syntax\\dist\\modules\\es2017\\lib\\parser.js": {
     "import": {
+      "@glimmer/util": {
+        "named": [
+          "assert"
+        ],
+        "default": false,
+        "all": false
+      },
       "simple-html-tokenizer": {
         "named": [
           "EventedTokenizer",
           "EntityParser",
           "HTML5NamedCharRefs"
-        ],
-        "default": false,
-        "all": false
-      },
-      "@glimmer/util": {
-        "named": [
-          "assert"
         ],
         "default": false,
         "all": false
@@ -321,13 +321,9 @@
         "default": true,
         "all": false
       },
-      "../utils": {
-        "named": [
-          "appendChild",
-          "isLiteral",
-          "printLiteral"
-        ],
-        "default": false,
+      "../errors/syntax-error": {
+        "named": [],
+        "default": true,
         "all": false
       },
       "../parser": {
@@ -337,9 +333,13 @@
         "default": false,
         "all": false
       },
-      "../errors/syntax-error": {
-        "named": [],
-        "default": true,
+      "../utils": {
+        "named": [
+          "appendChild",
+          "isLiteral",
+          "printLiteral"
+        ],
+        "default": false,
         "all": false
       }
     },
@@ -361,6 +361,26 @@
         "default": true,
         "all": false
       },
+      "../errors/syntax-error": {
+        "named": [],
+        "default": true,
+        "all": false
+      },
+      "../generation/print": {
+        "named": [],
+        "default": true,
+        "all": false
+      },
+      "../traversal/traverse": {
+        "named": [],
+        "default": true,
+        "all": false
+      },
+      "../traversal/walker": {
+        "named": [],
+        "default": true,
+        "all": false
+      },
       "../utils": {
         "named": [
           "appendChild",
@@ -376,36 +396,16 @@
         "default": false,
         "all": false
       },
-      "../errors/syntax-error": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
-      "../traversal/traverse": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
-      "../generation/print": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
-      "../traversal/walker": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
-      "handlebars": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
       "@glimmer/util": {
         "named": [
           "assign"
         ],
         "default": false,
+        "all": false
+      },
+      "handlebars": {
+        "named": [],
+        "default": true,
         "all": false
       }
     },
@@ -490,20 +490,23 @@
   },
   "node_modules\\@glimmer\\util\\dist\\modules\\es2017\\index.js": {
     "import": {
-      "./lib/platform-utils": {
-        "named": [],
+      "./lib/array-utils": {
+        "named": [
+          "EMPTY_ARRAY"
+        ],
         "default": false,
-        "all": true
+        "all": false
       },
       "./lib/assert": {
         "named": [],
         "default": true,
         "all": false
       },
-      "./lib/object-utils": {
+      "./lib/collections": {
         "named": [
-          "assign",
-          "fillNulls"
+          "Stack",
+          "DictSet",
+          "dict"
         ],
         "default": false,
         "all": false
@@ -512,15 +515,6 @@
         "named": [
           "ensureGuid",
           "initializeGuid"
-        ],
-        "default": false,
-        "all": false
-      },
-      "./lib/collections": {
-        "named": [
-          "Stack",
-          "DictSet",
-          "dict"
         ],
         "default": false,
         "all": false
@@ -535,12 +529,18 @@
         "default": false,
         "all": false
       },
-      "./lib/array-utils": {
+      "./lib/object-utils": {
         "named": [
-          "EMPTY_ARRAY"
+          "assign",
+          "fillNulls"
         ],
         "default": false,
         "all": false
+      },
+      "./lib/platform-utils": {
+        "named": [],
+        "default": false,
+        "all": true
       }
     },
     "export": {
@@ -712,12 +712,12 @@
   },
   "node_modules\\brace-expansion\\index.js": {
     "import": {
-      "concat-map": {
+      "balanced-match": {
         "named": [],
         "default": true,
         "all": false
       },
-      "balanced-match": {
+      "concat-map": {
         "named": [],
         "default": true,
         "all": false
@@ -732,7 +732,7 @@
   },
   "node_modules\\chalk\\index.js": {
     "import": {
-      "escape-string-regexp": {
+      "./templates.js": {
         "named": [],
         "default": true,
         "all": false
@@ -742,15 +742,15 @@
         "default": true,
         "all": false
       },
+      "escape-string-regexp": {
+        "named": [],
+        "default": true,
+        "all": false
+      },
       "supports-color": {
         "named": [],
         "default": false,
         "all": true
-      },
-      "./templates.js": {
-        "named": [],
-        "default": true,
-        "all": false
       }
     },
     "export": {
@@ -3212,10 +3212,25 @@
   },
   "node_modules\\cosmiconfig\\dist\\createExplorer.js": {
     "import": {
-      "path": {
+      "./funcRunner": {
         "named": [],
-        "default": false,
-        "all": true
+        "default": true,
+        "all": false
+      },
+      "./getDirectory": {
+        "named": [],
+        "default": true,
+        "all": false
+      },
+      "./loadDefinedFile": {
+        "named": [],
+        "default": true,
+        "all": false
+      },
+      "./loadJs": {
+        "named": [],
+        "default": true,
+        "all": false
       },
       "./loadPackageProp": {
         "named": [],
@@ -3227,25 +3242,10 @@
         "default": true,
         "all": false
       },
-      "./loadJs": {
+      "path": {
         "named": [],
-        "default": true,
-        "all": false
-      },
-      "./loadDefinedFile": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
-      "./funcRunner": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
-      "./getDirectory": {
-        "named": [],
-        "default": true,
-        "all": false
+        "default": false,
+        "all": true
       }
     },
     "export": {
@@ -3266,15 +3266,15 @@
   },
   "node_modules\\cosmiconfig\\dist\\getDirectory.js": {
     "import": {
-      "path": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
       "is-directory": {
         "named": [],
         "default": true,
         "all": false
+      },
+      "path": {
+        "named": [],
+        "default": false,
+        "all": true
       }
     },
     "export": {
@@ -3286,15 +3286,15 @@
   },
   "node_modules\\cosmiconfig\\dist\\index.js": {
     "import": {
-      "os": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
       "./createExplorer": {
         "named": [],
         "default": true,
         "all": false
+      },
+      "os": {
+        "named": [],
+        "default": false,
+        "all": true
       }
     },
     "export": {
@@ -3306,12 +3306,7 @@
   },
   "node_modules\\cosmiconfig\\dist\\loadDefinedFile.js": {
     "import": {
-      "js-yaml": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "require-from-string": {
+      "./parseJson": {
         "named": [],
         "default": true,
         "all": false
@@ -3321,15 +3316,20 @@
         "default": true,
         "all": false
       },
-      "./parseJson": {
+      "js-yaml": {
         "named": [],
-        "default": true,
-        "all": false
+        "default": false,
+        "all": true
       },
       "path": {
         "named": [],
         "default": false,
         "all": true
+      },
+      "require-from-string": {
+        "named": [],
+        "default": true,
+        "all": false
       }
     },
     "export": {
@@ -3341,12 +3341,12 @@
   },
   "node_modules\\cosmiconfig\\dist\\loadJs.js": {
     "import": {
-      "require-from-string": {
+      "./readFile": {
         "named": [],
         "default": true,
         "all": false
       },
-      "./readFile": {
+      "require-from-string": {
         "named": [],
         "default": true,
         "all": false
@@ -3361,20 +3361,20 @@
   },
   "node_modules\\cosmiconfig\\dist\\loadPackageProp.js": {
     "import": {
-      "path": {
+      "./parseJson": {
         "named": [],
-        "default": false,
-        "all": true
+        "default": true,
+        "all": false
       },
       "./readFile": {
         "named": [],
         "default": true,
         "all": false
       },
-      "./parseJson": {
+      "path": {
         "named": [],
-        "default": true,
-        "all": false
+        "default": false,
+        "all": true
       }
     },
     "export": {
@@ -3386,17 +3386,7 @@
   },
   "node_modules\\cosmiconfig\\dist\\loadRc.js": {
     "import": {
-      "js-yaml": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "require-from-string": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
-      "./readFile": {
+      "./funcRunner": {
         "named": [],
         "default": true,
         "all": false
@@ -3406,7 +3396,17 @@
         "default": true,
         "all": false
       },
-      "./funcRunner": {
+      "./readFile": {
+        "named": [],
+        "default": true,
+        "all": false
+      },
+      "js-yaml": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "require-from-string": {
         "named": [],
         "default": true,
         "all": false
@@ -3478,21 +3478,6 @@
   },
   "node_modules\\editorconfig\\index.js": {
     "import": {
-      "fs": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "path": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "semver": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
       "./lib/fnmatch": {
         "named": [],
         "default": true,
@@ -3504,6 +3489,21 @@
         "all": true
       },
       "./package.json": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "fs": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "path": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "semver": {
         "named": [],
         "default": false,
         "all": true
@@ -3563,12 +3563,12 @@
         "default": false,
         "all": true
       },
-      "sigmund": {
+      "path": {
         "named": [],
         "default": false,
         "all": true
       },
-      "path": {
+      "sigmund": {
         "named": [],
         "default": false,
         "all": true
@@ -3607,15 +3607,15 @@
   },
   "node_modules\\error-ex\\index.js": {
     "import": {
-      "util": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
       "is-arrayish": {
         "named": [],
         "default": true,
         "all": false
+      },
+      "util": {
+        "named": [],
+        "default": false,
+        "all": true
       }
     },
     "export": {
@@ -3669,17 +3669,17 @@
   },
   "node_modules\\esutils\\lib\\utils.js": {
     "import": {
-      "./keyword": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
       "./ast": {
         "named": [],
         "default": false,
         "all": true
       },
       "./code": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./keyword": {
         "named": [],
         "default": false,
         "all": true
@@ -3733,12 +3733,12 @@
   },
   "node_modules\\find-project-root\\index.js": {
     "import": {
-      "fs": {
+      "assert": {
         "named": [],
         "default": false,
         "all": true
       },
-      "assert": {
+      "fs": {
         "named": [],
         "default": false,
         "all": true
@@ -3767,12 +3767,12 @@
   },
   "node_modules\\flow-parser\\flow_parser.js": {
     "import": {
-      "fs": {
+      "constants": {
         "named": [],
         "default": false,
         "all": true
       },
-      "constants": {
+      "fs": {
         "named": [],
         "default": false,
         "all": true
@@ -3843,12 +3843,12 @@
   },
   "node_modules\\graphql\\error\\GraphQLError.js": {
     "import": {
-      "./printError": {
+      "../language/location": {
         "named": [],
         "default": false,
         "all": true
       },
-      "../language/location": {
+      "./printError": {
         "named": [],
         "default": false,
         "all": true
@@ -3863,12 +3863,12 @@
   },
   "node_modules\\graphql\\error\\index.js": {
     "import": {
-      "./GraphQLError": {
+      "./formatError": {
         "named": [],
         "default": false,
         "all": true
       },
-      "./syntaxError": {
+      "./GraphQLError": {
         "named": [],
         "default": false,
         "all": true
@@ -3883,7 +3883,7 @@
         "default": false,
         "all": true
       },
-      "./formatError": {
+      "./syntaxError": {
         "named": [],
         "default": false,
         "all": true
@@ -3970,7 +3970,7 @@
   },
   "node_modules\\graphql\\language\\index.js": {
     "import": {
-      "./location": {
+      "./directiveLocation": {
         "named": [],
         "default": false,
         "all": true
@@ -3981,6 +3981,11 @@
         "all": true
       },
       "./lexer": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./location": {
         "named": [],
         "default": false,
         "all": true
@@ -4001,11 +4006,6 @@
         "all": true
       },
       "./visitor": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./directiveLocation": {
         "named": [],
         "default": false,
         "all": true
@@ -4058,17 +4058,12 @@
   },
   "node_modules\\graphql\\language\\parser.js": {
     "import": {
-      "./source": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
       "../error": {
         "named": [],
         "default": false,
         "all": true
       },
-      "./lexer": {
+      "./directiveLocation": {
         "named": [],
         "default": false,
         "all": true
@@ -4078,7 +4073,12 @@
         "default": false,
         "all": true
       },
-      "./directiveLocation": {
+      "./lexer": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./source": {
         "named": [],
         "default": false,
         "all": true
@@ -4132,32 +4132,7 @@
   },
   "node_modules\\gray-matter\\index.js": {
     "import": {
-      "fs": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "extend-shallow": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
-      "./lib/parse": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
       "./lib/defaults": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
-      "./lib/stringify": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
-      "./lib/excerpt": {
         "named": [],
         "default": true,
         "all": false
@@ -4167,12 +4142,37 @@
         "default": false,
         "all": true
       },
+      "./lib/excerpt": {
+        "named": [],
+        "default": true,
+        "all": false
+      },
+      "./lib/parse": {
+        "named": [],
+        "default": true,
+        "all": false
+      },
+      "./lib/stringify": {
+        "named": [],
+        "default": true,
+        "all": false
+      },
       "./lib/to-file": {
         "named": [],
         "default": true,
         "all": false
       },
       "./lib/utils": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "extend-shallow": {
+        "named": [],
+        "default": true,
+        "all": false
+      },
+      "fs": {
         "named": [],
         "default": false,
         "all": true
@@ -4187,11 +4187,6 @@
   },
   "node_modules\\gray-matter\\lib\\defaults.js": {
     "import": {
-      "extend-shallow": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
       "./engines": {
         "named": [],
         "default": false,
@@ -4201,6 +4196,11 @@
         "named": [],
         "default": false,
         "all": true
+      },
+      "extend-shallow": {
+        "named": [],
+        "default": true,
+        "all": false
       }
     },
     "export": {
@@ -4256,12 +4256,12 @@
   },
   "node_modules\\gray-matter\\lib\\parse.js": {
     "import": {
-      "./engine": {
+      "./defaults": {
         "named": [],
         "default": true,
         "all": false
       },
-      "./defaults": {
+      "./engine": {
         "named": [],
         "default": true,
         "all": false
@@ -4276,12 +4276,7 @@
   },
   "node_modules\\gray-matter\\lib\\stringify.js": {
     "import": {
-      "extend-shallow": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
-      "kind-of": {
+      "./defaults": {
         "named": [],
         "default": true,
         "all": false
@@ -4291,7 +4286,12 @@
         "default": true,
         "all": false
       },
-      "./defaults": {
+      "extend-shallow": {
+        "named": [],
+        "default": true,
+        "all": false
+      },
+      "kind-of": {
         "named": [],
         "default": true,
         "all": false
@@ -4306,11 +4306,6 @@
   },
   "node_modules\\gray-matter\\lib\\to-file.js": {
     "import": {
-      "kind-of": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
       "./stringify": {
         "named": [],
         "default": true,
@@ -4320,6 +4315,11 @@
         "named": [],
         "default": false,
         "all": true
+      },
+      "kind-of": {
+        "named": [],
+        "default": true,
+        "all": false
       }
     },
     "export": {
@@ -4331,15 +4331,15 @@
   },
   "node_modules\\gray-matter\\lib\\utils.js": {
     "import": {
-      "strip-bom-string": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
       "kind-of": {
         "named": [],
         "default": false,
         "all": true
+      },
+      "strip-bom-string": {
+        "named": [],
+        "default": true,
+        "all": false
       }
     },
     "export": {
@@ -4410,17 +4410,12 @@
         "default": false,
         "all": true
       },
-      "./handlebars/safe-string": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
       "./handlebars/exception": {
         "named": [],
         "default": false,
         "all": true
       },
-      "./handlebars/utils": {
+      "./handlebars/no-conflict": {
         "named": [],
         "default": false,
         "all": true
@@ -4430,7 +4425,12 @@
         "default": false,
         "all": true
       },
-      "./handlebars/no-conflict": {
+      "./handlebars/safe-string": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./handlebars/utils": {
         "named": [],
         "default": false,
         "all": true
@@ -4445,7 +4445,7 @@
   },
   "node_modules\\handlebars\\dist\\cjs\\handlebars\\base.js": {
     "import": {
-      "./utils": {
+      "./decorators": {
         "named": [],
         "default": false,
         "all": true
@@ -4460,12 +4460,12 @@
         "default": false,
         "all": true
       },
-      "./decorators": {
+      "./logger": {
         "named": [],
         "default": false,
         "all": true
       },
-      "./logger": {
+      "./utils": {
         "named": [],
         "default": false,
         "all": true
@@ -4588,7 +4588,7 @@
   },
   "node_modules\\handlebars\\dist\\cjs\\handlebars\\runtime.js": {
     "import": {
-      "./utils": {
+      "./base": {
         "named": [],
         "default": false,
         "all": true
@@ -4598,7 +4598,7 @@
         "default": false,
         "all": true
       },
-      "./base": {
+      "./utils": {
         "named": [],
         "default": false,
         "all": true
@@ -4648,12 +4648,7 @@
   },
   "node_modules\\handlebars\\dist\\cjs\\handlebars\\compiler\\base.js": {
     "import": {
-      "./parser": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./whitespace-control": {
+      "../utils": {
         "named": [],
         "default": false,
         "all": true
@@ -4663,7 +4658,12 @@
         "default": false,
         "all": true
       },
-      "../utils": {
+      "./parser": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./whitespace-control": {
         "named": [],
         "default": false,
         "all": true
@@ -4877,12 +4877,12 @@
   },
   "node_modules\\handlebars\\dist\\cjs\\handlebars\\helpers\\each.js": {
     "import": {
-      "../utils": {
+      "../exception": {
         "named": [],
         "default": false,
         "all": true
       },
-      "../exception": {
+      "../utils": {
         "named": [],
         "default": false,
         "all": true
@@ -5240,22 +5240,37 @@
   },
   "node_modules\\js-yaml\\lib\\js-yaml.js": {
     "import": {
-      "./js-yaml/loader": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
       "./js-yaml/dumper": {
         "named": [],
         "default": false,
         "all": true
       },
-      "./js-yaml/type": {
+      "./js-yaml/exception": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./js-yaml/loader": {
         "named": [],
         "default": false,
         "all": true
       },
       "./js-yaml/schema": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./js-yaml/schema/core": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./js-yaml/schema/default_full": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./js-yaml/schema/default_safe": {
         "named": [],
         "default": false,
         "all": true
@@ -5270,22 +5285,7 @@
         "default": false,
         "all": true
       },
-      "./js-yaml/schema/core": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./js-yaml/schema/default_safe": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./js-yaml/schema/default_full": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./js-yaml/exception": {
+      "./js-yaml/type": {
         "named": [],
         "default": false,
         "all": true
@@ -5395,12 +5395,12 @@
         "default": true,
         "all": false
       },
-      "./schema/default_safe": {
+      "./schema/default_full": {
         "named": [],
         "default": false,
         "all": true
       },
-      "./schema/default_full": {
+      "./schema/default_safe": {
         "named": [],
         "default": false,
         "all": true
@@ -5500,7 +5500,7 @@
         "default": true,
         "all": false
       },
-      "../type/js/undefined": {
+      "../type/js/function": {
         "named": [],
         "default": false,
         "all": true
@@ -5510,12 +5510,12 @@
         "default": false,
         "all": true
       },
-      "./default_safe": {
+      "../type/js/undefined": {
         "named": [],
         "default": false,
         "all": true
       },
-      "../type/js/function": {
+      "./default_safe": {
         "named": [],
         "default": false,
         "all": true
@@ -5535,7 +5535,7 @@
         "default": true,
         "all": false
       },
-      "./core": {
+      "../type/binary": {
         "named": [],
         "default": false,
         "all": true
@@ -5545,12 +5545,7 @@
         "default": false,
         "all": true
       },
-      "../type/timestamp": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "../type/binary": {
+      "../type/omap": {
         "named": [],
         "default": false,
         "all": true
@@ -5560,12 +5555,17 @@
         "default": false,
         "all": true
       },
-      "../type/omap": {
+      "../type/set": {
         "named": [],
         "default": false,
         "all": true
       },
-      "../type/set": {
+      "../type/timestamp": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./core": {
         "named": [],
         "default": false,
         "all": true
@@ -5585,17 +5585,17 @@
         "default": true,
         "all": false
       },
-      "../type/str": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
       "../type/map": {
         "named": [],
         "default": false,
         "all": true
       },
       "../type/seq": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "../type/str": {
         "named": [],
         "default": false,
         "all": true
@@ -5615,11 +5615,6 @@
         "default": true,
         "all": false
       },
-      "../type/null": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
       "../type/bool": {
         "named": [],
         "default": false,
@@ -5631,6 +5626,11 @@
         "all": true
       },
       "../type/int": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "../type/null": {
         "named": [],
         "default": false,
         "all": true
@@ -5976,15 +5976,15 @@
   },
   "node_modules\\minimatch\\minimatch.js": {
     "import": {
-      "path": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
       "brace-expansion": {
         "named": [],
         "default": true,
         "all": false
+      },
+      "path": {
+        "named": [],
+        "default": false,
+        "all": true
       }
     },
     "export": {
@@ -6011,6 +6011,11 @@
         "default": false,
         "all": true
       },
+      "is-alphanumerical": {
+        "named": [],
+        "default": true,
+        "all": false
+      },
       "is-decimal": {
         "named": [],
         "default": false,
@@ -6020,11 +6025,6 @@
         "named": [],
         "default": false,
         "all": true
-      },
-      "is-alphanumerical": {
-        "named": [],
-        "default": true,
-        "all": false
       }
     },
     "export": {
@@ -6036,15 +6036,15 @@
   },
   "node_modules\\parse-json\\index.js": {
     "import": {
-      "error-ex": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
       "./vendor/parse": {
         "named": [],
         "default": false,
         "all": true
+      },
+      "error-ex": {
+        "named": [],
+        "default": true,
+        "all": false
       }
     },
     "export": {
@@ -6085,21 +6085,6 @@
         "default": false,
         "all": true
       },
-      "./serializer": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./tree_adapters/default": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./tree_adapters/htmlparser2": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
       "./parser/parser_stream": {
         "named": [],
         "default": false,
@@ -6110,12 +6095,27 @@
         "default": false,
         "all": true
       },
+      "./sax": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./serializer": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
       "./serializer/serializer_stream": {
         "named": [],
         "default": false,
         "all": true
       },
-      "./sax": {
+      "./tree_adapters/default": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./tree_adapters/htmlparser2": {
         "named": [],
         "default": false,
         "all": true
@@ -6159,12 +6159,12 @@
   },
   "node_modules\\parse5\\lib\\common\\foreign_content.js": {
     "import": {
-      "./html": {
+      "../tokenizer": {
         "named": [],
         "default": false,
         "all": true
       },
-      "../tokenizer": {
+      "./html": {
         "named": [],
         "default": false,
         "all": true
@@ -6235,22 +6235,17 @@
   },
   "node_modules\\parse5\\lib\\extensions\\location_info\\parser_mixin.js": {
     "import": {
-      "../../utils/mixin": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
       "../../common/html": {
         "named": [],
         "default": false,
         "all": true
       },
-      "./tokenizer_mixin": {
+      "../../tokenizer": {
         "named": [],
         "default": false,
         "all": true
       },
-      "./open_element_stack_mixin": {
+      "../../utils/mixin": {
         "named": [],
         "default": false,
         "all": true
@@ -6260,7 +6255,12 @@
         "default": false,
         "all": true
       },
-      "../../tokenizer": {
+      "./open_element_stack_mixin": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./tokenizer_mixin": {
         "named": [],
         "default": false,
         "all": true
@@ -6280,17 +6280,17 @@
   },
   "node_modules\\parse5\\lib\\extensions\\location_info\\tokenizer_mixin.js": {
     "import": {
+      "../../tokenizer": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
       "../../utils/mixin": {
         "named": [],
         "default": false,
         "all": true
       },
       "../position_tracking/preprocessor_mixin": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "../../tokenizer": {
         "named": [],
         "default": false,
         "all": true
@@ -6310,12 +6310,12 @@
   },
   "node_modules\\parse5\\lib\\extensions\\position_tracking\\preprocessor_mixin.js": {
     "import": {
-      "../../utils/mixin": {
+      "../../common/unicode": {
         "named": [],
         "default": false,
         "all": true
       },
-      "../../common/unicode": {
+      "../../utils/mixin": {
         "named": [],
         "default": false,
         "all": true
@@ -6344,22 +6344,12 @@
   },
   "node_modules\\parse5\\lib\\parser\\index.js": {
     "import": {
-      "../tree_adapters/default": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./open_element_stack": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./formatting_element_list": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
       "../common/doctype": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "../common/foreign_content": {
         "named": [],
         "default": false,
         "all": true
@@ -6374,22 +6364,32 @@
         "default": false,
         "all": true
       },
-      "../utils/merge_options": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "../common/foreign_content": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
       "../extensions/location_info/parser_mixin": {
         "named": [],
         "default": false,
         "all": true
       },
       "../tokenizer": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "../tree_adapters/default": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "../utils/merge_options": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./formatting_element_list": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./open_element_stack": {
         "named": [],
         "default": false,
         "all": true
@@ -6424,12 +6424,12 @@
         "default": false,
         "all": true
       },
-      "util": {
+      "stream": {
         "named": [],
         "default": false,
         "all": true
       },
-      "stream": {
+      "util": {
         "named": [],
         "default": false,
         "all": true
@@ -6469,12 +6469,12 @@
   },
   "node_modules\\parse5\\lib\\sax\\dev_null_stream.js": {
     "import": {
-      "util": {
+      "stream": {
         "named": [],
         "default": false,
         "all": true
       },
-      "stream": {
+      "util": {
         "named": [],
         "default": false,
         "all": true
@@ -6489,21 +6489,6 @@
   },
   "node_modules\\parse5\\lib\\sax\\index.js": {
     "import": {
-      "./dev_null_stream": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./parser_feedback_simulator": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "../utils/merge_options": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
       "../extensions/location_info/tokenizer_mixin": {
         "named": [],
         "default": false,
@@ -6514,12 +6499,27 @@
         "default": false,
         "all": true
       },
-      "util": {
+      "../utils/merge_options": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./dev_null_stream": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./parser_feedback_simulator": {
         "named": [],
         "default": false,
         "all": true
       },
       "stream": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "util": {
         "named": [],
         "default": false,
         "all": true
@@ -6539,12 +6539,12 @@
         "default": false,
         "all": true
       },
-      "../common/unicode": {
+      "../common/html": {
         "named": [],
         "default": false,
         "all": true
       },
-      "../common/html": {
+      "../common/unicode": {
         "named": [],
         "default": false,
         "all": true
@@ -6564,22 +6564,22 @@
   },
   "node_modules\\parse5\\lib\\serializer\\index.js": {
     "import": {
-      "../tree_adapters/default": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
       "../common/doctype": {
         "named": [],
         "default": false,
         "all": true
       },
-      "../utils/merge_options": {
+      "../common/html": {
         "named": [],
         "default": false,
         "all": true
       },
-      "../common/html": {
+      "../tree_adapters/default": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "../utils/merge_options": {
         "named": [],
         "default": false,
         "all": true
@@ -6599,12 +6599,12 @@
         "default": false,
         "all": true
       },
-      "util": {
+      "stream": {
         "named": [],
         "default": false,
         "all": true
       },
-      "stream": {
+      "util": {
         "named": [],
         "default": false,
         "all": true
@@ -6619,17 +6619,17 @@
   },
   "node_modules\\parse5\\lib\\tokenizer\\index.js": {
     "import": {
-      "./preprocessor": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
       "../common/unicode": {
         "named": [],
         "default": false,
         "all": true
       },
       "./named_entity_data": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./preprocessor": {
         "named": [],
         "default": false,
         "all": true
@@ -6794,12 +6794,12 @@
   },
   "node_modules\\postcss-less\\dist\\import.js": {
     "import": {
-      "postcss/lib/rule": {
+      "./less-stringify": {
         "named": [],
         "default": false,
         "all": true
       },
-      "./less-stringify": {
+      "postcss/lib/rule": {
         "named": [],
         "default": false,
         "all": true
@@ -6829,12 +6829,12 @@
   },
   "node_modules\\postcss-less\\dist\\less-parse.js": {
     "import": {
-      "postcss/lib/input": {
+      "./less-parser": {
         "named": [],
         "default": false,
         "all": true
       },
-      "./less-parser": {
+      "postcss/lib/input": {
         "named": [],
         "default": false,
         "all": true
@@ -6849,32 +6849,12 @@
   },
   "node_modules\\postcss-less\\dist\\less-parser.js": {
     "import": {
-      "postcss/lib/comment": {
+      "./find-extend-rule": {
         "named": [],
         "default": false,
         "all": true
       },
       "./import": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "postcss/lib/parser": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./rule": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./root": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./find-extend-rule": {
         "named": [],
         "default": false,
         "all": true
@@ -6885,6 +6865,26 @@
         "all": true
       },
       "./less-tokenize": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./root": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./rule": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "postcss/lib/comment": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "postcss/lib/parser": {
         "named": [],
         "default": false,
         "all": true
@@ -6969,12 +6969,12 @@
   },
   "node_modules\\postcss-less\\dist\\root.js": {
     "import": {
-      "postcss/lib/root": {
+      "./less-stringify": {
         "named": [],
         "default": false,
         "all": true
       },
-      "./less-stringify": {
+      "postcss/lib/root": {
         "named": [],
         "default": false,
         "all": true
@@ -6989,12 +6989,12 @@
   },
   "node_modules\\postcss-less\\dist\\rule.js": {
     "import": {
-      "postcss/lib/rule": {
+      "./less-stringify": {
         "named": [],
         "default": false,
         "all": true
       },
-      "./less-stringify": {
+      "postcss/lib/rule": {
         "named": [],
         "default": false,
         "all": true
@@ -7101,15 +7101,15 @@
   },
   "node_modules\\postcss-less\\dist\\tokenizer\\tokenize-default.js": {
     "import": {
-      "./globals": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
       "./find-end-of-escaping": {
         "named": [],
         "default": false,
         "all": true
+      },
+      "./globals": {
+        "named": [],
+        "default": true,
+        "all": false
       },
       "./is-escaping": {
         "named": [],
@@ -7304,12 +7304,12 @@
   },
   "node_modules\\postcss-media-query-parser\\dist\\parsers.js": {
     "import": {
-      "./nodes/Node": {
+      "./nodes/Container": {
         "named": [],
         "default": false,
         "all": true
       },
-      "./nodes/Container": {
+      "./nodes/Node": {
         "named": [],
         "default": false,
         "all": true
@@ -7363,12 +7363,12 @@
   },
   "node_modules\\postcss-scss\\lib\\scss-parse.js": {
     "import": {
-      "postcss/lib/input": {
+      "./scss-parser": {
         "named": [],
         "default": false,
         "all": true
       },
-      "./scss-parser": {
+      "postcss/lib/input": {
         "named": [],
         "default": false,
         "all": true
@@ -7383,22 +7383,22 @@
   },
   "node_modules\\postcss-scss\\lib\\scss-parser.js": {
     "import": {
-      "postcss/lib/comment": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "postcss/lib/parser": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
       "./nested-declaration": {
         "named": [],
         "default": false,
         "all": true
       },
       "./scss-tokenize": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "postcss/lib/comment": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "postcss/lib/parser": {
         "named": [],
         "default": false,
         "all": true
@@ -7443,12 +7443,12 @@
   },
   "node_modules\\postcss-scss\\lib\\scss-syntax.js": {
     "import": {
-      "./scss-stringify": {
+      "./scss-parse": {
         "named": [],
         "default": false,
         "all": true
       },
-      "./scss-parse": {
+      "./scss-stringify": {
         "named": [],
         "default": false,
         "all": true
@@ -7472,7 +7472,7 @@
   },
   "node_modules\\postcss-scss\\node_modules\\chalk\\index.js": {
     "import": {
-      "escape-string-regexp": {
+      "./templates.js": {
         "named": [],
         "default": true,
         "all": false
@@ -7482,16 +7482,16 @@
         "default": true,
         "all": false
       },
+      "escape-string-regexp": {
+        "named": [],
+        "default": true,
+        "all": false
+      },
       "supports-color": {
         "named": [
           "stdout"
         ],
         "default": false,
-        "all": false
-      },
-      "./templates.js": {
-        "named": [],
-        "default": true,
         "all": false
       }
     },
@@ -7552,12 +7552,17 @@
   },
   "node_modules\\postcss-scss\\node_modules\\postcss\\lib\\container.js": {
     "import": {
-      "./declaration": {
+      "./at-rule": {
         "named": [],
         "default": false,
         "all": true
       },
       "./comment": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./declaration": {
         "named": [],
         "default": false,
         "all": true
@@ -7572,17 +7577,12 @@
         "default": false,
         "all": true
       },
-      "./rule": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
       "./root": {
         "named": [],
         "default": false,
         "all": true
       },
-      "./at-rule": {
+      "./rule": {
         "named": [],
         "default": false,
         "all": true
@@ -7597,7 +7597,7 @@
   },
   "node_modules\\postcss-scss\\node_modules\\postcss\\lib\\css-syntax-error.js": {
     "import": {
-      "supports-color": {
+      "./terminal-highlight": {
         "named": [],
         "default": false,
         "all": true
@@ -7607,7 +7607,7 @@
         "default": false,
         "all": true
       },
-      "./terminal-highlight": {
+      "supports-color": {
         "named": [],
         "default": false,
         "all": true
@@ -7667,12 +7667,7 @@
         "default": false,
         "all": true
       },
-      "./stringify": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./warn-once": {
+      "./parse": {
         "named": [],
         "default": false,
         "all": true
@@ -7682,7 +7677,12 @@
         "default": false,
         "all": true
       },
-      "./parse": {
+      "./stringify": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./warn-once": {
         "named": [],
         "default": false,
         "all": true
@@ -7706,12 +7706,12 @@
   },
   "node_modules\\postcss-scss\\node_modules\\postcss\\lib\\map-generator.js": {
     "import": {
-      "source-map": {
+      "path": {
         "named": [],
         "default": false,
         "all": true
       },
-      "path": {
+      "source-map": {
         "named": [],
         "default": false,
         "all": true
@@ -7756,12 +7756,12 @@
   },
   "node_modules\\postcss-scss\\node_modules\\postcss\\lib\\parse.js": {
     "import": {
-      "./parser": {
+      "./input": {
         "named": [],
         "default": false,
         "all": true
       },
-      "./input": {
+      "./parser": {
         "named": [],
         "default": false,
         "all": true
@@ -7776,12 +7776,7 @@
   },
   "node_modules\\postcss-scss\\node_modules\\postcss\\lib\\parser.js": {
     "import": {
-      "./declaration": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./tokenize": {
+      "./at-rule": {
         "named": [],
         "default": false,
         "all": true
@@ -7791,7 +7786,7 @@
         "default": false,
         "all": true
       },
-      "./at-rule": {
+      "./declaration": {
         "named": [],
         "default": false,
         "all": true
@@ -7802,6 +7797,11 @@
         "all": true
       },
       "./rule": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./tokenize": {
         "named": [],
         "default": false,
         "all": true
@@ -7816,7 +7816,7 @@
   },
   "node_modules\\postcss-scss\\node_modules\\postcss\\lib\\previous-map.js": {
     "import": {
-      "source-map": {
+      "fs": {
         "named": [],
         "default": false,
         "all": true
@@ -7826,7 +7826,7 @@
         "default": false,
         "all": true
       },
-      "fs": {
+      "source-map": {
         "named": [],
         "default": false,
         "all": true
@@ -7940,7 +7940,7 @@
   },
   "node_modules\\postcss-scss\\node_modules\\postcss\\lib\\terminal-highlight.js": {
     "import": {
-      "chalk": {
+      "./input": {
         "named": [],
         "default": false,
         "all": true
@@ -7950,7 +7950,7 @@
         "default": false,
         "all": true
       },
-      "./input": {
+      "chalk": {
         "named": [],
         "default": false,
         "all": true
@@ -7992,12 +7992,12 @@
   },
   "node_modules\\postcss-scss\\node_modules\\source-map\\source-map.js": {
     "import": {
-      "./lib/source-map-generator": {
+      "./lib/source-map-consumer": {
         "named": [],
         "default": false,
         "all": true
       },
-      "./lib/source-map-consumer": {
+      "./lib/source-map-generator": {
         "named": [],
         "default": false,
         "all": true
@@ -8105,16 +8105,6 @@
   },
   "node_modules\\postcss-scss\\node_modules\\source-map\\lib\\source-map-consumer.js": {
     "import": {
-      "./util": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./binary-search": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
       "./array-set": {
         "named": [
           "ArraySet"
@@ -8127,12 +8117,22 @@
         "default": false,
         "all": true
       },
+      "./binary-search": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
       "./quick-sort": {
         "named": [
           "quickSort"
         ],
         "default": false,
         "all": false
+      },
+      "./util": {
+        "named": [],
+        "default": false,
+        "all": true
       }
     },
     "export": {
@@ -8148,16 +8148,6 @@
   },
   "node_modules\\postcss-scss\\node_modules\\source-map\\lib\\source-map-generator.js": {
     "import": {
-      "./base64-vlq": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./util": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
       "./array-set": {
         "named": [
           "ArraySet"
@@ -8165,12 +8155,22 @@
         "default": false,
         "all": false
       },
+      "./base64-vlq": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
       "./mapping-list": {
         "named": [
           "MappingList"
         ],
         "default": false,
         "all": false
+      },
+      "./util": {
+        "named": [],
+        "default": false,
+        "all": true
       }
     },
     "export": {
@@ -8217,15 +8217,15 @@
   },
   "node_modules\\postcss-scss\\node_modules\\supports-color\\index.js": {
     "import": {
-      "os": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
       "has-flag": {
         "named": [],
         "default": true,
         "all": false
+      },
+      "os": {
+        "named": [],
+        "default": false,
+        "all": true
       }
     },
     "export": {
@@ -8301,12 +8301,12 @@
         "default": false,
         "all": true
       },
-      "./selectors/universal": {
+      "./selectors/types": {
         "named": [],
         "default": false,
         "all": true
       },
-      "./selectors/types": {
+      "./selectors/universal": {
         "named": [],
         "default": false,
         "all": true
@@ -8321,32 +8321,17 @@
   },
   "node_modules\\postcss-selector-parser\\dist\\parser.js": {
     "import": {
-      "flatten": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "indexes-of": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "uniq": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./selectors/root": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./selectors/selector": {
+      "./selectors/attribute": {
         "named": [],
         "default": false,
         "all": true
       },
       "./selectors/className": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./selectors/combinator": {
         "named": [],
         "default": false,
         "all": true
@@ -8361,12 +8346,7 @@
         "default": false,
         "all": true
       },
-      "./selectors/tag": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./selectors/string": {
+      "./selectors/nesting": {
         "named": [],
         "default": false,
         "all": true
@@ -8376,22 +8356,32 @@
         "default": false,
         "all": true
       },
-      "./selectors/attribute": {
+      "./selectors/root": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./selectors/selector": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./selectors/string": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./selectors/tag": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./selectors/types": {
         "named": [],
         "default": false,
         "all": true
       },
       "./selectors/universal": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./selectors/combinator": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./selectors/nesting": {
         "named": [],
         "default": false,
         "all": true
@@ -8406,7 +8396,17 @@
         "default": false,
         "all": true
       },
-      "./selectors/types": {
+      "flatten": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "indexes-of": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "uniq": {
         "named": [],
         "default": false,
         "all": true
@@ -8866,11 +8866,6 @@
   },
   "node_modules\\postcss-values-parser\\lib\\index.js": {
     "import": {
-      "./parser": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
       "./atword": {
         "named": [],
         "default": true,
@@ -8907,6 +8902,11 @@
         "all": false
       },
       "./paren": {
+        "named": [],
+        "default": true,
+        "all": false
+      },
+      "./parser": {
         "named": [],
         "default": true,
         "all": false
@@ -9010,16 +9010,6 @@
   },
   "node_modules\\postcss-values-parser\\lib\\parser.js": {
     "import": {
-      "./root": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
-      "./value": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
       "./atword": {
         "named": [],
         "default": true,
@@ -9036,6 +9026,11 @@
         "all": false
       },
       "./comment": {
+        "named": [],
+        "default": true,
+        "all": false
+      },
+      "./errors/ParserError": {
         "named": [],
         "default": true,
         "all": false
@@ -9060,12 +9055,17 @@
         "default": true,
         "all": false
       },
+      "./root": {
+        "named": [],
+        "default": true,
+        "all": false
+      },
       "./string": {
         "named": [],
         "default": true,
         "all": false
       },
-      "./word": {
+      "./tokenize": {
         "named": [],
         "default": true,
         "all": false
@@ -9075,7 +9075,12 @@
         "default": true,
         "all": false
       },
-      "./tokenize": {
+      "./value": {
+        "named": [],
+        "default": true,
+        "all": false
+      },
+      "./word": {
         "named": [],
         "default": true,
         "all": false
@@ -9091,11 +9096,6 @@
         "all": false
       },
       "uniq": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
-      "./errors/ParserError": {
         "named": [],
         "default": true,
         "all": false
@@ -9145,15 +9145,15 @@
   },
   "node_modules\\postcss-values-parser\\lib\\tokenize.js": {
     "import": {
-      "util": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
       "./errors/TokenizeError": {
         "named": [],
         "default": true,
         "all": false
+      },
+      "util": {
+        "named": [],
+        "default": false,
+        "all": true
       }
     },
     "export": {
@@ -9258,12 +9258,12 @@
   },
   "node_modules\\postcss\\lib\\comment.js": {
     "import": {
-      "./warn-once": {
+      "./node": {
         "named": [],
         "default": false,
         "all": true
       },
-      "./node": {
+      "./warn-once": {
         "named": [],
         "default": false,
         "all": true
@@ -9278,17 +9278,17 @@
   },
   "node_modules\\postcss\\lib\\container.js": {
     "import": {
-      "./declaration": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./warn-once": {
+      "./at-rule": {
         "named": [],
         "default": false,
         "all": true
       },
       "./comment": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./declaration": {
         "named": [],
         "default": false,
         "all": true
@@ -9303,7 +9303,7 @@
         "default": false,
         "all": true
       },
-      "./at-rule": {
+      "./root": {
         "named": [],
         "default": false,
         "all": true
@@ -9313,7 +9313,7 @@
         "default": false,
         "all": true
       },
-      "./root": {
+      "./warn-once": {
         "named": [],
         "default": false,
         "all": true
@@ -9328,7 +9328,12 @@
   },
   "node_modules\\postcss\\lib\\css-syntax-error.js": {
     "import": {
-      "supports-color": {
+      "./terminal-highlight": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./warn-once": {
         "named": [],
         "default": false,
         "all": true
@@ -9338,12 +9343,7 @@
         "default": false,
         "all": true
       },
-      "./terminal-highlight": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./warn-once": {
+      "supports-color": {
         "named": [],
         "default": false,
         "all": true
@@ -9358,12 +9358,12 @@
   },
   "node_modules\\postcss\\lib\\declaration.js": {
     "import": {
-      "./warn-once": {
+      "./node": {
         "named": [],
         "default": false,
         "all": true
       },
-      "./node": {
+      "./warn-once": {
         "named": [],
         "default": false,
         "all": true
@@ -9408,12 +9408,7 @@
         "default": false,
         "all": true
       },
-      "./stringify": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./warn-once": {
+      "./parse": {
         "named": [],
         "default": false,
         "all": true
@@ -9423,7 +9418,12 @@
         "default": false,
         "all": true
       },
-      "./parse": {
+      "./stringify": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./warn-once": {
         "named": [],
         "default": false,
         "all": true
@@ -9452,12 +9452,12 @@
         "default": false,
         "all": true
       },
-      "source-map": {
+      "path": {
         "named": [],
         "default": false,
         "all": true
       },
-      "path": {
+      "source-map": {
         "named": [],
         "default": false,
         "all": true
@@ -9502,12 +9502,12 @@
   },
   "node_modules\\postcss\\lib\\parse.js": {
     "import": {
-      "./parser": {
+      "./input": {
         "named": [],
         "default": false,
         "all": true
       },
-      "./input": {
+      "./parser": {
         "named": [],
         "default": false,
         "all": true
@@ -9522,12 +9522,7 @@
   },
   "node_modules\\postcss\\lib\\parser.js": {
     "import": {
-      "./declaration": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./tokenize": {
+      "./at-rule": {
         "named": [],
         "default": false,
         "all": true
@@ -9537,7 +9532,7 @@
         "default": false,
         "all": true
       },
-      "./at-rule": {
+      "./declaration": {
         "named": [],
         "default": false,
         "all": true
@@ -9548,6 +9543,11 @@
         "all": true
       },
       "./rule": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./tokenize": {
         "named": [],
         "default": false,
         "all": true
@@ -9562,12 +9562,12 @@
   },
   "node_modules\\postcss\\lib\\previous-map.js": {
     "import": {
-      "js-base64": {
+      "fs": {
         "named": [],
         "default": false,
         "all": true
       },
-      "source-map": {
+      "js-base64": {
         "named": [],
         "default": false,
         "all": true
@@ -9577,7 +9577,7 @@
         "default": false,
         "all": true
       },
-      "fs": {
+      "source-map": {
         "named": [],
         "default": false,
         "all": true
@@ -9627,17 +9627,17 @@
         "default": false,
         "all": true
       },
-      "./warn-once": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
       "./lazy-result": {
         "named": [],
         "default": false,
         "all": true
       },
       "./processor": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./warn-once": {
         "named": [],
         "default": false,
         "all": true
@@ -9657,12 +9657,12 @@
         "default": false,
         "all": true
       },
-      "./warn-once": {
+      "./list": {
         "named": [],
         "default": false,
         "all": true
       },
-      "./list": {
+      "./warn-once": {
         "named": [],
         "default": false,
         "all": true
@@ -9701,7 +9701,7 @@
   },
   "node_modules\\postcss\\lib\\terminal-highlight.js": {
     "import": {
-      "chalk": {
+      "./input": {
         "named": [],
         "default": false,
         "all": true
@@ -9711,7 +9711,7 @@
         "default": false,
         "all": true
       },
-      "./input": {
+      "chalk": {
         "named": [],
         "default": false,
         "all": true
@@ -9762,22 +9762,22 @@
   },
   "node_modules\\postcss\\node_modules\\chalk\\index.js": {
     "import": {
-      "escape-string-regexp": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
       "ansi-styles": {
         "named": [],
         "default": true,
         "all": false
       },
-      "strip-ansi": {
+      "escape-string-regexp": {
+        "named": [],
+        "default": true,
+        "all": false
+      },
+      "has-ansi": {
         "named": [],
         "default": false,
         "all": true
       },
-      "has-ansi": {
+      "strip-ansi": {
         "named": [],
         "default": false,
         "all": true
@@ -9815,12 +9815,12 @@
   },
   "node_modules\\postcss\\node_modules\\source-map\\source-map.js": {
     "import": {
-      "./lib/source-map-generator": {
+      "./lib/source-map-consumer": {
         "named": [],
         "default": false,
         "all": true
       },
-      "./lib/source-map-consumer": {
+      "./lib/source-map-generator": {
         "named": [],
         "default": false,
         "all": true
@@ -9928,16 +9928,6 @@
   },
   "node_modules\\postcss\\node_modules\\source-map\\lib\\source-map-consumer.js": {
     "import": {
-      "./util": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./binary-search": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
       "./array-set": {
         "named": [
           "ArraySet"
@@ -9950,12 +9940,22 @@
         "default": false,
         "all": true
       },
+      "./binary-search": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
       "./quick-sort": {
         "named": [
           "quickSort"
         ],
         "default": false,
         "all": false
+      },
+      "./util": {
+        "named": [],
+        "default": false,
+        "all": true
       }
     },
     "export": {
@@ -9971,16 +9971,6 @@
   },
   "node_modules\\postcss\\node_modules\\source-map\\lib\\source-map-generator.js": {
     "import": {
-      "./base64-vlq": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./util": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
       "./array-set": {
         "named": [
           "ArraySet"
@@ -9988,12 +9978,22 @@
         "default": false,
         "all": false
       },
+      "./base64-vlq": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
       "./mapping-list": {
         "named": [
           "MappingList"
         ],
         "default": false,
         "all": false
+      },
+      "./util": {
+        "named": [],
+        "default": false,
+        "all": true
       }
     },
     "export": {
@@ -10094,10 +10094,10 @@
   },
   "node_modules\\remark-frontmatter\\index.js": {
     "import": {
-      "xtend": {
+      "./lib/compile": {
         "named": [],
-        "default": true,
-        "all": false
+        "default": false,
+        "all": true
       },
       "./lib/matters": {
         "named": [],
@@ -10109,10 +10109,10 @@
         "default": false,
         "all": true
       },
-      "./lib/compile": {
+      "xtend": {
         "named": [],
-        "default": false,
-        "all": true
+        "default": true,
+        "all": false
       }
     },
     "export": {
@@ -10157,6 +10157,11 @@
   },
   "node_modules\\remark-parse\\index.js": {
     "import": {
+      "./lib/parser.js": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
       "unherit": {
         "named": [],
         "default": true,
@@ -10166,11 +10171,6 @@
         "named": [],
         "default": true,
         "all": false
-      },
-      "./lib/parser.js": {
-        "named": [],
-        "default": false,
-        "all": true
       }
     },
     "export": {
@@ -10191,12 +10191,12 @@
   },
   "node_modules\\remark-parse\\lib\\decode.js": {
     "import": {
-      "xtend": {
+      "parse-entities": {
         "named": [],
         "default": true,
         "all": false
       },
-      "parse-entities": {
+      "xtend": {
         "named": [],
         "default": true,
         "all": false
@@ -10233,12 +10233,12 @@
   },
   "node_modules\\remark-parse\\lib\\parse.js": {
     "import": {
-      "xtend": {
+      "unist-util-remove-position": {
         "named": [],
         "default": true,
         "all": false
       },
-      "unist-util-remove-position": {
+      "xtend": {
         "named": [],
         "default": true,
         "all": false
@@ -10253,37 +10253,12 @@
   },
   "node_modules\\remark-parse\\lib\\parser.js": {
     "import": {
-      "xtend": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
-      "state-toggle": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
-      "vfile-location": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
-      "./unescape": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
       "./decode": {
         "named": [],
         "default": true,
         "all": false
       },
-      "./tokenizer": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
-      "./set-options": {
+      "./defaults": {
         "named": [],
         "default": false,
         "all": true
@@ -10293,82 +10268,7 @@
         "default": false,
         "all": true
       },
-      "./defaults": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./tokenize/blockquote": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./tokenize/code-fenced": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./tokenize/heading-atx": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./tokenize/heading-setext": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./tokenize/list": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./tokenize/thematic-break": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./tokenize/footnote-definition": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./tokenize/newline": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./tokenize/definition": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./tokenize/code-indented": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./tokenize/table": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./tokenize/html-block": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./tokenize/paragraph": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./tokenize/escape": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./tokenize/html-inline": {
+      "./set-options": {
         "named": [],
         "default": false,
         "all": true
@@ -10378,22 +10278,32 @@
         "default": false,
         "all": true
       },
-      "./tokenize/url": {
+      "./tokenize/blockquote": {
         "named": [],
         "default": false,
         "all": true
       },
-      "./tokenize/link": {
+      "./tokenize/break": {
         "named": [],
         "default": false,
         "all": true
       },
-      "./tokenize/strong": {
+      "./tokenize/code-fenced": {
         "named": [],
         "default": false,
         "all": true
       },
-      "./tokenize/reference": {
+      "./tokenize/code-indented": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./tokenize/code-inline": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./tokenize/definition": {
         "named": [],
         "default": false,
         "all": true
@@ -10408,12 +10318,67 @@
         "default": false,
         "all": true
       },
-      "./tokenize/code-inline": {
+      "./tokenize/escape": {
         "named": [],
         "default": false,
         "all": true
       },
-      "./tokenize/break": {
+      "./tokenize/footnote-definition": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./tokenize/heading-atx": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./tokenize/heading-setext": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./tokenize/html-block": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./tokenize/html-inline": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./tokenize/link": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./tokenize/list": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./tokenize/newline": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./tokenize/paragraph": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./tokenize/reference": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./tokenize/strong": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./tokenize/table": {
         "named": [],
         "default": false,
         "all": true
@@ -10422,6 +10387,41 @@
         "named": [],
         "default": false,
         "all": true
+      },
+      "./tokenize/thematic-break": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./tokenize/url": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./tokenizer": {
+        "named": [],
+        "default": true,
+        "all": false
+      },
+      "./unescape": {
+        "named": [],
+        "default": true,
+        "all": false
+      },
+      "state-toggle": {
+        "named": [],
+        "default": true,
+        "all": false
+      },
+      "vfile-location": {
+        "named": [],
+        "default": true,
+        "all": false
+      },
+      "xtend": {
+        "named": [],
+        "default": true,
+        "all": false
       }
     },
     "export": {
@@ -10433,20 +10433,20 @@
   },
   "node_modules\\remark-parse\\lib\\set-options.js": {
     "import": {
-      "xtend": {
+      "./defaults": {
         "named": [],
-        "default": true,
-        "all": false
+        "default": false,
+        "all": true
       },
       "markdown-escapes": {
         "named": [],
         "default": true,
         "all": false
       },
-      "./defaults": {
+      "xtend": {
         "named": [],
-        "default": false,
-        "all": true
+        "default": true,
+        "all": false
       }
     },
     "export": {
@@ -10557,6 +10557,11 @@
   },
   "node_modules\\remark-parse\\lib\\tokenize\\auto-link.js": {
     "import": {
+      "../locate/tag": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
       "is-whitespace-character": {
         "named": [],
         "default": true,
@@ -10566,11 +10571,6 @@
         "named": [],
         "default": true,
         "all": false
-      },
-      "../locate/tag": {
-        "named": [],
-        "default": false,
-        "all": true
       }
     },
     "export": {
@@ -10582,12 +10582,12 @@
   },
   "node_modules\\remark-parse\\lib\\tokenize\\blockquote.js": {
     "import": {
-      "trim": {
+      "../util/interrupt": {
         "named": [],
         "default": true,
         "all": false
       },
-      "../util/interrupt": {
+      "trim": {
         "named": [],
         "default": true,
         "all": false
@@ -10652,15 +10652,15 @@
   },
   "node_modules\\remark-parse\\lib\\tokenize\\code-inline.js": {
     "import": {
-      "is-whitespace-character": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
       "../locate/code-inline": {
         "named": [],
         "default": false,
         "all": true
+      },
+      "is-whitespace-character": {
+        "named": [],
+        "default": true,
+        "all": false
       }
     },
     "export": {
@@ -10672,12 +10672,12 @@
   },
   "node_modules\\remark-parse\\lib\\tokenize\\definition.js": {
     "import": {
-      "is-whitespace-character": {
+      "../util/normalize": {
         "named": [],
         "default": true,
         "all": false
       },
-      "../util/normalize": {
+      "is-whitespace-character": {
         "named": [],
         "default": true,
         "all": false
@@ -10692,15 +10692,15 @@
   },
   "node_modules\\remark-parse\\lib\\tokenize\\delete.js": {
     "import": {
-      "is-whitespace-character": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
       "../locate/delete": {
         "named": [],
         "default": false,
         "all": true
+      },
+      "is-whitespace-character": {
+        "named": [],
+        "default": true,
+        "all": false
       }
     },
     "export": {
@@ -10712,7 +10712,12 @@
   },
   "node_modules\\remark-parse\\lib\\tokenize\\emphasis.js": {
     "import": {
-      "trim": {
+      "../locate/emphasis": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "is-whitespace-character": {
         "named": [],
         "default": true,
         "all": false
@@ -10722,15 +10727,10 @@
         "default": true,
         "all": false
       },
-      "is-whitespace-character": {
+      "trim": {
         "named": [],
         "default": true,
         "all": false
-      },
-      "../locate/emphasis": {
-        "named": [],
-        "default": false,
-        "all": true
       }
     },
     "export": {
@@ -10757,12 +10757,12 @@
   },
   "node_modules\\remark-parse\\lib\\tokenize\\footnote-definition.js": {
     "import": {
-      "is-whitespace-character": {
+      "../util/normalize": {
         "named": [],
         "default": true,
         "all": false
       },
-      "../util/normalize": {
+      "is-whitespace-character": {
         "named": [],
         "default": true,
         "all": false
@@ -10812,11 +10812,6 @@
   },
   "node_modules\\remark-parse\\lib\\tokenize\\html-inline.js": {
     "import": {
-      "is-alphabetical": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
       "../locate/tag": {
         "named": [],
         "default": false,
@@ -10827,6 +10822,11 @@
           "tag"
         ],
         "default": false,
+        "all": false
+      },
+      "is-alphabetical": {
+        "named": [],
+        "default": true,
         "all": false
       }
     },
@@ -10839,15 +10839,15 @@
   },
   "node_modules\\remark-parse\\lib\\tokenize\\link.js": {
     "import": {
-      "is-whitespace-character": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
       "../locate/link": {
         "named": [],
         "default": false,
         "all": true
+      },
+      "is-whitespace-character": {
+        "named": [],
+        "default": true,
+        "all": false
       }
     },
     "export": {
@@ -10859,22 +10859,12 @@
   },
   "node_modules\\remark-parse\\lib\\tokenize\\list.js": {
     "import": {
-      "trim": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
-      "repeat-string": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
-      "is-decimal": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
       "../util/get-indentation": {
+        "named": [],
+        "default": true,
+        "all": false
+      },
+      "../util/interrupt": {
         "named": [],
         "default": true,
         "all": false
@@ -10884,7 +10874,17 @@
         "default": true,
         "all": false
       },
-      "../util/interrupt": {
+      "is-decimal": {
+        "named": [],
+        "default": true,
+        "all": false
+      },
+      "repeat-string": {
+        "named": [],
+        "default": true,
+        "all": false
+      },
+      "trim": {
         "named": [],
         "default": true,
         "all": false
@@ -10914,7 +10914,7 @@
   },
   "node_modules\\remark-parse\\lib\\tokenize\\paragraph.js": {
     "import": {
-      "trim": {
+      "../util/interrupt": {
         "named": [],
         "default": true,
         "all": false
@@ -10924,12 +10924,12 @@
         "default": true,
         "all": false
       },
-      "trim-trailing-lines": {
+      "trim": {
         "named": [],
         "default": true,
         "all": false
       },
-      "../util/interrupt": {
+      "trim-trailing-lines": {
         "named": [],
         "default": true,
         "all": false
@@ -10944,17 +10944,17 @@
   },
   "node_modules\\remark-parse\\lib\\tokenize\\reference.js": {
     "import": {
-      "is-whitespace-character": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
       "../locate/link": {
         "named": [],
         "default": false,
         "all": true
       },
       "../util/normalize": {
+        "named": [],
+        "default": true,
+        "all": false
+      },
+      "is-whitespace-character": {
         "named": [],
         "default": true,
         "all": false
@@ -10969,20 +10969,20 @@
   },
   "node_modules\\remark-parse\\lib\\tokenize\\strong.js": {
     "import": {
-      "trim": {
+      "../locate/strong": {
         "named": [],
-        "default": true,
-        "all": false
+        "default": false,
+        "all": true
       },
       "is-whitespace-character": {
         "named": [],
         "default": true,
         "all": false
       },
-      "../locate/strong": {
+      "trim": {
         "named": [],
-        "default": false,
-        "all": true
+        "default": true,
+        "all": false
       }
     },
     "export": {
@@ -11027,20 +11027,20 @@
   },
   "node_modules\\remark-parse\\lib\\tokenize\\url.js": {
     "import": {
-      "parse-entities": {
+      "../locate/url": {
         "named": [],
-        "default": true,
-        "all": false
+        "default": false,
+        "all": true
       },
       "is-whitespace-character": {
         "named": [],
         "default": true,
         "all": false
       },
-      "../locate/url": {
+      "parse-entities": {
         "named": [],
-        "default": false,
-        "all": true
+        "default": true,
+        "all": false
       }
     },
     "export": {
@@ -11097,7 +11097,7 @@
   },
   "node_modules\\remark-parse\\lib\\util\\remove-indentation.js": {
     "import": {
-      "trim": {
+      "./get-indentation": {
         "named": [],
         "default": true,
         "all": false
@@ -11107,7 +11107,7 @@
         "default": true,
         "all": false
       },
-      "./get-indentation": {
+      "trim": {
         "named": [],
         "default": true,
         "all": false
@@ -11221,11 +11221,6 @@
   },
   "node_modules\\simple-html-tokenizer\\dist\\es6\\index.js": {
     "import": {
-      "./html5-named-char-refs": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
       "./entity-parser": {
         "named": [],
         "default": true,
@@ -11236,12 +11231,17 @@
         "default": true,
         "all": false
       },
-      "./tokenizer": {
+      "./html5-named-char-refs": {
         "named": [],
         "default": true,
         "all": false
       },
       "./tokenize": {
+        "named": [],
+        "default": true,
+        "all": false
+      },
+      "./tokenizer": {
         "named": [],
         "default": true,
         "all": false
@@ -11262,17 +11262,17 @@
   },
   "node_modules\\simple-html-tokenizer\\dist\\es6\\tokenize.js": {
     "import": {
-      "./tokenizer": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
       "./entity-parser": {
         "named": [],
         "default": true,
         "all": false
       },
       "./html5-named-char-refs": {
+        "named": [],
+        "default": true,
+        "all": false
+      },
+      "./tokenizer": {
         "named": [],
         "default": true,
         "all": false
@@ -11324,18 +11324,6 @@
   },
   "node_modules\\source-map-support\\source-map-support.js": {
     "import": {
-      "source-map": {
-        "named": [
-          "SourceMapConsumer"
-        ],
-        "default": false,
-        "all": false
-      },
-      "path": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
       "fs": {
         "named": [],
         "default": false,
@@ -11345,6 +11333,18 @@
         "named": [],
         "default": false,
         "all": true
+      },
+      "path": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "source-map": {
+        "named": [
+          "SourceMapConsumer"
+        ],
+        "default": false,
+        "all": false
       }
     },
     "export": {
@@ -11362,12 +11362,12 @@
   },
   "node_modules\\source-map-support\\node_modules\\source-map\\source-map.js": {
     "import": {
-      "./lib/source-map-generator": {
+      "./lib/source-map-consumer": {
         "named": [],
         "default": false,
         "all": true
       },
-      "./lib/source-map-consumer": {
+      "./lib/source-map-generator": {
         "named": [],
         "default": false,
         "all": true
@@ -11475,16 +11475,6 @@
   },
   "node_modules\\source-map-support\\node_modules\\source-map\\lib\\source-map-consumer.js": {
     "import": {
-      "./util": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./binary-search": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
       "./array-set": {
         "named": [
           "ArraySet"
@@ -11497,12 +11487,22 @@
         "default": false,
         "all": true
       },
+      "./binary-search": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
       "./quick-sort": {
         "named": [
           "quickSort"
         ],
         "default": false,
         "all": false
+      },
+      "./util": {
+        "named": [],
+        "default": false,
+        "all": true
       }
     },
     "export": {
@@ -11518,16 +11518,6 @@
   },
   "node_modules\\source-map-support\\node_modules\\source-map\\lib\\source-map-generator.js": {
     "import": {
-      "./base64-vlq": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./util": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
       "./array-set": {
         "named": [
           "ArraySet"
@@ -11535,12 +11525,22 @@
         "default": false,
         "all": false
       },
+      "./base64-vlq": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
       "./mapping-list": {
         "named": [
           "MappingList"
         ],
         "default": false,
         "all": false
+      },
+      "./util": {
+        "named": [],
+        "default": false,
+        "all": true
       }
     },
     "export": {
@@ -11587,12 +11587,12 @@
   },
   "node_modules\\source-map\\lib\\source-map.js": {
     "import": {
-      "./source-map/source-map-generator": {
+      "./source-map/source-map-consumer": {
         "named": [],
         "default": false,
         "all": true
       },
-      "./source-map/source-map-consumer": {
+      "./source-map/source-map-generator": {
         "named": [],
         "default": false,
         "all": true
@@ -11700,16 +11700,6 @@
   },
   "node_modules\\source-map\\lib\\source-map\\source-map-consumer.js": {
     "import": {
-      "./util": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./binary-search": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
       "./array-set": {
         "named": [
           "ArraySet"
@@ -11722,12 +11712,22 @@
         "default": false,
         "all": true
       },
+      "./binary-search": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
       "./quick-sort": {
         "named": [
           "quickSort"
         ],
         "default": false,
         "all": false
+      },
+      "./util": {
+        "named": [],
+        "default": false,
+        "all": true
       }
     },
     "export": {
@@ -11743,16 +11743,6 @@
   },
   "node_modules\\source-map\\lib\\source-map\\source-map-generator.js": {
     "import": {
-      "./base64-vlq": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./util": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
       "./array-set": {
         "named": [
           "ArraySet"
@@ -11760,12 +11750,22 @@
         "default": false,
         "all": false
       },
+      "./base64-vlq": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
       "./mapping-list": {
         "named": [
           "MappingList"
         ],
         "default": false,
         "all": false
+      },
+      "./util": {
+        "named": [],
+        "default": false,
+        "all": true
       }
     },
     "export": {
@@ -11833,12 +11833,12 @@
   },
   "node_modules\\string-width\\index.js": {
     "import": {
-      "strip-ansi": {
+      "is-fullwidth-code-point": {
         "named": [],
         "default": true,
         "all": false
       },
-      "is-fullwidth-code-point": {
+      "strip-ansi": {
         "named": [],
         "default": true,
         "all": false
@@ -11886,15 +11886,15 @@
   },
   "node_modules\\supports-color\\index.js": {
     "import": {
-      "os": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
       "has-flag": {
         "named": [],
         "default": true,
         "all": false
+      },
+      "os": {
+        "named": [],
+        "default": false,
+        "all": true
       }
     },
     "export": {
@@ -11974,12 +11974,17 @@
   },
   "node_modules\\typescript-eslint-parser\\parser.js": {
     "import": {
+      "./lib/ast-converter": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
       "./lib/ast-node-types": {
         "named": [],
         "default": false,
         "all": true
       },
-      "./lib/ast-converter": {
+      "./package.json": {
         "named": [],
         "default": false,
         "all": true
@@ -11990,11 +11995,6 @@
         "all": true
       },
       "typescript": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./package.json": {
         "named": [],
         "default": false,
         "all": true
@@ -12019,12 +12019,12 @@
         "default": false,
         "all": true
       },
-      "./node-utils": {
+      "./convert-comments": {
         "named": [],
         "default": false,
         "all": true
       },
-      "./convert-comments": {
+      "./node-utils": {
         "named": [],
         "default": false,
         "all": true
@@ -12226,12 +12226,12 @@
   },
   "node_modules\\typescript-eslint-parser\\lib\\node-utils.js": {
     "import": {
-      "typescript": {
+      "lodash.unescape": {
         "named": [],
         "default": false,
         "all": true
       },
-      "lodash.unescape": {
+      "typescript": {
         "named": [],
         "default": false,
         "all": true
@@ -12290,12 +12290,7 @@
   },
   "node_modules\\typescript\\lib\\typescript.js": {
     "import": {
-      "source-map-support": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "path": {
+      "crypto": {
         "named": [],
         "default": false,
         "all": true
@@ -12310,7 +12305,12 @@
         "default": false,
         "all": true
       },
-      "crypto": {
+      "path": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "source-map-support": {
         "named": [],
         "default": false,
         "all": true
@@ -12325,12 +12325,12 @@
   },
   "node_modules\\unherit\\index.js": {
     "import": {
-      "xtend": {
+      "inherits": {
         "named": [],
         "default": true,
         "all": false
       },
-      "inherits": {
+      "xtend": {
         "named": [],
         "default": true,
         "all": false
@@ -12390,17 +12390,17 @@
   },
   "node_modules\\unified\\index.js": {
     "import": {
-      "extend": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
       "bail": {
         "named": [],
         "default": true,
         "all": false
       },
-      "vfile": {
+      "extend": {
+        "named": [],
+        "default": true,
+        "all": false
+      },
+      "is-plain-obj": {
         "named": [],
         "default": true,
         "all": false
@@ -12410,7 +12410,7 @@
         "default": true,
         "all": false
       },
-      "x-is-string": {
+      "vfile": {
         "named": [],
         "default": true,
         "all": false
@@ -12420,7 +12420,7 @@
         "default": true,
         "all": false
       },
-      "is-plain-obj": {
+      "x-is-string": {
         "named": [],
         "default": true,
         "all": false
@@ -12516,17 +12516,17 @@
   },
   "node_modules\\vfile\\core.js": {
     "import": {
+      "is-buffer": {
+        "named": [],
+        "default": true,
+        "all": false
+      },
       "path": {
         "named": [],
         "default": false,
         "all": true
       },
       "replace-ext": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
-      "is-buffer": {
         "named": [],
         "default": true,
         "all": false
@@ -12541,15 +12541,15 @@
   },
   "node_modules\\vfile\\index.js": {
     "import": {
-      "vfile-message": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
       "./core.js": {
         "named": [],
         "default": false,
         "all": true
+      },
+      "vfile-message": {
+        "named": [],
+        "default": true,
+        "all": false
       }
     },
     "export": {
@@ -12648,12 +12648,7 @@
   },
   "src\\common\\load-plugins.js": {
     "import": {
-      "resolve": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "read-pkg-up": {
+      "../language-css": {
         "named": [],
         "default": false,
         "all": true
@@ -12668,12 +12663,12 @@
         "default": false,
         "all": true
       },
-      "../language-js": {
+      "../language-html": {
         "named": [],
         "default": false,
         "all": true
       },
-      "../language-html": {
+      "../language-js": {
         "named": [],
         "default": false,
         "all": true
@@ -12688,7 +12683,12 @@
         "default": false,
         "all": true
       },
-      "../language-css": {
+      "read-pkg-up": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "resolve": {
         "named": [],
         "default": false,
         "all": true
@@ -12721,6 +12721,23 @@
   },
   "src\\common\\support.js": {
     "import": {
+      "../../package.json": {
+        "named": [
+          "version"
+        ],
+        "default": false,
+        "all": false
+      },
+      "../cli/constant": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./load-plugins": {
+        "named": [],
+        "default": true,
+        "all": false
+      },
       "./util": {
         "named": [],
         "default": false,
@@ -12732,23 +12749,6 @@
         "all": false
       },
       "semver": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "../../package.json": {
-        "named": [
-          "version"
-        ],
-        "default": false,
-        "all": false
-      },
-      "./load-plugins": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
-      "../cli/constant": {
         "named": [],
         "default": false,
         "all": true
@@ -12765,12 +12765,12 @@
   },
   "src\\common\\third-party.js": {
     "import": {
-      "get-stream": {
+      "cosmiconfig": {
         "named": [],
         "default": false,
         "all": true
       },
-      "cosmiconfig": {
+      "get-stream": {
         "named": [],
         "default": false,
         "all": true
@@ -12788,12 +12788,12 @@
   },
   "src\\common\\util-shared.js": {
     "import": {
-      "./util": {
+      "../doc/doc-utils": {
         "named": [],
         "default": false,
         "all": true
       },
-      "../doc/doc-utils": {
+      "./util": {
         "named": [],
         "default": false,
         "all": true
@@ -12817,7 +12817,7 @@
   },
   "src\\common\\util.js": {
     "import": {
-      "string-width": {
+      "cjk-regex": {
         "named": [],
         "default": true,
         "all": false
@@ -12832,7 +12832,7 @@
         "default": true,
         "all": false
       },
-      "cjk-regex": {
+      "string-width": {
         "named": [],
         "default": true,
         "all": false
@@ -12894,20 +12894,10 @@
   },
   "src\\config\\resolve-config-editorconfig.js": {
     "import": {
-      "path": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
       "editorconfig": {
         "named": [],
         "default": false,
         "all": true
-      },
-      "mem": {
-        "named": [],
-        "default": true,
-        "all": false
       },
       "editorconfig-to-prettier": {
         "named": [],
@@ -12918,6 +12908,16 @@
         "named": [],
         "default": true,
         "all": false
+      },
+      "mem": {
+        "named": [],
+        "default": true,
+        "all": false
+      },
+      "path": {
+        "named": [],
+        "default": false,
+        "all": true
       }
     },
     "export": {
@@ -12937,12 +12937,7 @@
         "default": false,
         "all": true
       },
-      "minimatch": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
-      "path": {
+      "./resolve-config-editorconfig": {
         "named": [],
         "default": false,
         "all": true
@@ -12952,7 +12947,12 @@
         "default": true,
         "all": false
       },
-      "./resolve-config-editorconfig": {
+      "minimatch": {
+        "named": [],
+        "default": true,
+        "all": false
+      },
+      "path": {
         "named": [],
         "default": false,
         "all": true
@@ -13052,12 +13052,12 @@
   },
   "src\\doc\\index.js": {
     "import": {
-      "./doc-debug": {
+      "./doc-builders": {
         "named": [],
         "default": false,
         "all": true
       },
-      "./doc-builders": {
+      "./doc-debug": {
         "named": [],
         "default": false,
         "all": true
@@ -13102,7 +13102,7 @@
   },
   "src\\language-css\\index.js": {
     "import": {
-      "./printer-postcss": {
+      "../common/util": {
         "named": [],
         "default": false,
         "all": true
@@ -13112,7 +13112,7 @@
         "default": false,
         "all": true
       },
-      "../common/util": {
+      "./printer-postcss": {
         "named": [],
         "default": false,
         "all": true
@@ -13161,12 +13161,12 @@
         "default": true,
         "all": false
       },
-      "postcss-selector-parser": {
+      "postcss-less": {
         "named": [],
         "default": false,
         "all": true
       },
-      "postcss-values-parser": {
+      "postcss-less/dist/less-parser": {
         "named": [],
         "default": false,
         "all": true
@@ -13181,12 +13181,12 @@
         "default": false,
         "all": true
       },
-      "postcss-less": {
+      "postcss-selector-parser": {
         "named": [],
         "default": false,
         "all": true
       },
-      "postcss-less/dist/less-parser": {
+      "postcss-values-parser": {
         "named": [],
         "default": false,
         "all": true
@@ -13201,16 +13201,6 @@
   },
   "src\\language-css\\printer-postcss.js": {
     "import": {
-      "html-tag-names": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "./clean": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
       "../common/util": {
         "named": [],
         "default": false,
@@ -13222,6 +13212,16 @@
         "all": true
       },
       "../doc": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./clean": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "html-tag-names": {
         "named": [],
         "default": false,
         "all": true
@@ -13240,12 +13240,12 @@
   },
   "src\\language-graphql\\index.js": {
     "import": {
-      "./printer-graphql": {
+      "./options": {
         "named": [],
         "default": false,
         "all": true
       },
-      "./options": {
+      "./printer-graphql": {
         "named": [],
         "default": false,
         "all": true
@@ -13309,13 +13309,6 @@
   },
   "src\\language-graphql\\printer-graphql.js": {
     "import": {
-      "../doc": {
-        "named": [
-          "builders"
-        ],
-        "default": false,
-        "all": false
-      },
       "../common/util": {
         "named": [],
         "default": false,
@@ -13325,6 +13318,13 @@
         "named": [],
         "default": false,
         "all": true
+      },
+      "../doc": {
+        "named": [
+          "builders"
+        ],
+        "default": false,
+        "all": false
       }
     },
     "export": {
@@ -13456,11 +13456,6 @@
   },
   "src\\language-html\\printer-htmlparser2.js": {
     "import": {
-      "./embed": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
       "../common/util": {
         "named": [],
         "default": false,
@@ -13472,6 +13467,11 @@
         ],
         "default": false,
         "all": false
+      },
+      "./embed": {
+        "named": [],
+        "default": false,
+        "all": true
       }
     },
     "export": {
@@ -13535,7 +13535,12 @@
   },
   "src\\language-js\\index.js": {
     "import": {
-      "./printer-estree": {
+      "../common/util": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./options": {
         "named": [],
         "default": false,
         "all": true
@@ -13547,12 +13552,7 @@
         "default": false,
         "all": false
       },
-      "./options": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "../common/util": {
+      "./printer-estree": {
         "named": [],
         "default": false,
         "all": true
@@ -13578,12 +13578,12 @@
   },
   "src\\language-js\\needs-parens.js": {
     "import": {
-      "assert": {
+      "../common/util": {
         "named": [],
         "default": false,
         "all": true
       },
-      "../common/util": {
+      "assert": {
         "named": [],
         "default": false,
         "all": true
@@ -13702,16 +13702,6 @@
   },
   "src\\language-js\\printer-estree.js": {
     "import": {
-      "assert": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "../main/comments": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
       "../common/util": {
         "named": [],
         "default": false,
@@ -13722,12 +13712,12 @@
         "default": false,
         "all": true
       },
-      "esutils": {
+      "../doc": {
         "named": [],
         "default": false,
         "all": true
       },
-      "./embed": {
+      "../main/comments": {
         "named": [],
         "default": false,
         "all": true
@@ -13737,14 +13727,12 @@
         "default": false,
         "all": true
       },
-      "./pragma": {
-        "named": [
-          "insertPragma"
-        ],
-        "default": false,
-        "all": false
-      },
       "./comments": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./embed": {
         "named": [],
         "default": false,
         "all": true
@@ -13754,7 +13742,19 @@
         "default": true,
         "all": false
       },
-      "../doc": {
+      "./pragma": {
+        "named": [
+          "insertPragma"
+        ],
+        "default": false,
+        "all": false
+      },
+      "assert": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "esutils": {
         "named": [],
         "default": false,
         "all": true
@@ -13779,7 +13779,7 @@
   },
   "src\\language-markdown\\embed.js": {
     "import": {
-      "../doc/doc-utils": {
+      "../common/support": {
         "named": [],
         "default": false,
         "all": true
@@ -13789,12 +13789,12 @@
         "default": false,
         "all": true
       },
-      "../common/support": {
+      "../doc": {
         "named": [],
         "default": false,
         "all": true
       },
-      "../doc": {
+      "../doc/doc-utils": {
         "named": [],
         "default": false,
         "all": true
@@ -13809,17 +13809,17 @@
   },
   "src\\language-markdown\\index.js": {
     "import": {
-      "./printer-markdown": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
       "./options": {
         "named": [],
         "default": false,
         "all": true
       },
       "./pragma": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "./printer-markdown": {
         "named": [],
         "default": false,
         "all": true
@@ -13859,6 +13859,11 @@
   },
   "src\\language-markdown\\parser-markdown.js": {
     "import": {
+      "../common/util": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
       "remark-frontmatter": {
         "named": [],
         "default": false,
@@ -13873,11 +13878,6 @@
         "named": [],
         "default": true,
         "all": false
-      },
-      "../common/util": {
-        "named": [],
-        "default": false,
-        "all": true
       }
     },
     "export": {
@@ -13902,12 +13902,17 @@
   },
   "src\\language-markdown\\printer-markdown.js": {
     "import": {
-      "../doc/doc-utils": {
+      "../common/util": {
         "named": [],
         "default": false,
         "all": true
       },
-      "../common/util": {
+      "../doc": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "../doc/doc-utils": {
         "named": [],
         "default": false,
         "all": true
@@ -13918,11 +13923,6 @@
         "all": true
       },
       "./pragma": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "../doc": {
         "named": [],
         "default": false,
         "all": true
@@ -13990,17 +13990,17 @@
   },
   "src\\language-vue\\printer-vue.js": {
     "import": {
-      "./embed": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
       "../doc": {
         "named": [
           "builders"
         ],
         "default": false,
         "all": false
+      },
+      "./embed": {
+        "named": [],
+        "default": false,
+        "all": true
       }
     },
     "export": {
@@ -14016,7 +14016,12 @@
   },
   "src\\main\\ast-to-doc.js": {
     "import": {
-      "assert": {
+      "../common/fast-path": {
+        "named": [],
+        "default": true,
+        "all": false
+      },
+      "../doc": {
         "named": [],
         "default": false,
         "all": true
@@ -14026,17 +14031,12 @@
         "default": false,
         "all": true
       },
-      "../common/fast-path": {
-        "named": [],
-        "default": true,
-        "all": false
-      },
       "./multiparser": {
         "named": [],
         "default": false,
         "all": true
       },
-      "../doc": {
+      "assert": {
         "named": [],
         "default": false,
         "all": true
@@ -14051,7 +14051,12 @@
   },
   "src\\main\\comments.js": {
     "import": {
-      "assert": {
+      "../common/util": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "../common/util-shared": {
         "named": [],
         "default": false,
         "all": true
@@ -14063,12 +14068,7 @@
         "default": false,
         "all": false
       },
-      "../common/util": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
-      "../common/util-shared": {
+      "assert": {
         "named": [],
         "default": false,
         "all": true
@@ -14097,11 +14097,9 @@
   },
   "src\\main\\multiparser.js": {
     "import": {
-      "./options": {
-        "named": [
-          "normalize"
-        ],
-        "default": false,
+      "./ast-to-doc": {
+        "named": [],
+        "default": true,
         "all": false
       },
       "./comments": {
@@ -14109,9 +14107,11 @@
         "default": false,
         "all": true
       },
-      "./ast-to-doc": {
-        "named": [],
-        "default": true,
+      "./options": {
+        "named": [
+          "normalize"
+        ],
+        "default": false,
         "all": false
       },
       "./parser": {
@@ -14143,20 +14143,20 @@
   },
   "src\\main\\options-normalizer.js": {
     "import": {
-      "leven": {
+      "./options-descriptor": {
         "named": [],
-        "default": true,
-        "all": false
+        "default": false,
+        "all": true
       },
       "./options-validator": {
         "named": [],
         "default": false,
         "all": true
       },
-      "./options-descriptor": {
+      "leven": {
         "named": [],
-        "default": false,
-        "all": true
+        "default": true,
+        "all": false
       }
     },
     "export": {
@@ -14188,10 +14188,10 @@
   },
   "src\\main\\options.js": {
     "import": {
-      "path": {
+      "../common/load-plugins": {
         "named": [],
-        "default": false,
-        "all": true
+        "default": true,
+        "all": false
       },
       "../common/support": {
         "named": [
@@ -14200,15 +14200,15 @@
         "default": false,
         "all": false
       },
+      "./get-plugin": {
+        "named": [],
+        "default": true,
+        "all": false
+      },
       "./options-normalizer": {
         "named": [],
         "default": false,
         "all": true
-      },
-      "../common/load-plugins": {
-        "named": [],
-        "default": true,
-        "all": false
       },
       "./parser": {
         "named": [
@@ -14217,10 +14217,10 @@
         "default": false,
         "all": false
       },
-      "./get-plugin": {
+      "path": {
         "named": [],
-        "default": true,
-        "all": false
+        "default": false,
+        "all": true
       }
     },
     "export": {
@@ -14235,11 +14235,6 @@
   },
   "src\\main\\parser.js": {
     "import": {
-      "path": {
-        "named": [],
-        "default": false,
-        "all": true
-      },
       "../common/errors": {
         "named": [
           "ConfigError"
@@ -14253,6 +14248,11 @@
         "all": true
       },
       "@babel/code-frame": {
+        "named": [],
+        "default": false,
+        "all": true
+      },
+      "path": {
         "named": [],
         "default": false,
         "all": true
