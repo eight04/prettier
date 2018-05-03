@@ -158,8 +158,8 @@ const languages = [
 ];
 
 const typescript = {
-  get parse() {
-    return eval("require")("./parser-typescript");
+  parse(...args) {
+    return require("./parser-typescript")(...args); // split
   },
   astFormat: "estree",
   hasPragma,
@@ -168,8 +168,8 @@ const typescript = {
 };
 
 const babylon = {
-  get parse() {
-    return eval("require")("./parser-babylon");
+  parse(...args) {
+    return require("./parser-babylon")(...args); // split
   },
   astFormat: "estree",
   hasPragma,
@@ -185,8 +185,8 @@ const parsers = {
     }
   }),
   flow: {
-    get parse() {
-      return eval("require")("./parser-flow");
+    parse(...args) {
+      return require("./parser-flow")(...args); // split
     },
     astFormat: "estree",
     hasPragma,

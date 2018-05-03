@@ -36,8 +36,8 @@ const languages = [
 ];
 
 const remark = {
-  get parse() {
-    return eval("require")("./parser-markdown");
+  parse(...args) {
+    return require("./parser-markdown")(...args); // split
   },
   astFormat: "mdast",
   hasPragma: pragma.hasPragma,

@@ -20,8 +20,8 @@ const languages = [
 
 const parsers = {
   glimmer: {
-    get parse() {
-      return eval("require")("./parser-glimmer");
+    parse(...args) {
+      return require("./parser-glimmer")(...args); // split
     },
     astFormat: "glimmer",
     locEnd: function(node) {

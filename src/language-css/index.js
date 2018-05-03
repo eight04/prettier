@@ -53,8 +53,8 @@ const languages = [
 ];
 
 const postcss = {
-  get parse() {
-    return eval("require")("./parser-postcss");
+  parse(...args) {
+    return require("./parser-postcss")(...args); // split
   },
   astFormat: "postcss",
   locEnd: function(node) {

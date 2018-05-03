@@ -23,8 +23,8 @@ const languages = [
 
 const parsers = {
   vue: {
-    get parse() {
-      return eval("require")("./parser-vue");
+    parse(...args) {
+      return require("./parser-vue")(...args); // split
     },
     astFormat: "vue"
   }

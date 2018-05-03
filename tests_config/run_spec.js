@@ -2,7 +2,7 @@
 
 const fs = require("fs");
 const extname = require("path").extname;
-const prettier = require("./require_prettier");
+const prettier = require("../dist");
 const massageAST = require("../src/common/clean-ast.js").massageAST;
 const normalizeOptions = require("../src/main/options").normalize;
 
